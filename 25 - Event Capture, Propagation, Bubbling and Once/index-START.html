@@ -43,7 +43,27 @@
 
 <button></button>
 <script>
+// Get DOM elements
+const divs = document.querySelectorAll('div');
+const btn = document.querySelector('button');
 
+// Even function which console.log's the 'this' element's classes
+function logText(e) {
+  console.log(this.classList.value); 
+  // e.stopPropagation(); // stop bubbling!
+}
+
+// Event listeners
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false,
+  once: true
+}));
+
+btn.addEventListener('click', () => {
+  console.log('Cliccckkkked!');
+}, {
+  once: true
+});
 </script>
 </body>
 </html>
